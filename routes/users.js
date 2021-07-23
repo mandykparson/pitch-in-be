@@ -1,13 +1,29 @@
-const express = require('express');const router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { User } = require('../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 
-router.get('/users', (request, response) => {
+router.get('/users', (request, response, next) => {
+  //   const { authorization } = request.headers;
+
+  //   if (!authorization) {
+  //     response.status(403).send({ error: 'Bearer token must be present'})
+  //   } else {
+  //     const token = authorization.split(' ')[1]
+  //     const secret = process.env.AUTH_SECRET;
+  //     const decoded_token = jwt.verify(token, secret)
+  //     const { user_id } = decoded_token;
+  //   }
+  //   next();
+  // }, (request, response) => {
     User.query()
+      .withGraphFetched('pitches')
       .then(users => response.json(users));
 });
+
+// router.get('/users', authenticate, sendUsers)
 
 router.post('/users', (request, response) => {
     const { user } = request.body;

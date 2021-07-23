@@ -20,5 +20,10 @@
     "nodemon": "^2.0.12",
     "objection": "^2.2.15",
     "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^8.5.4",
+    "dotenv": "^10.0.0"
   }
 }

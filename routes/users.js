@@ -16,8 +16,17 @@ router.post('/users', (request, response) => {
         .insert({ username: user.username, password_digest: hashedPassword })
         .then(newUser => response.status(201).json(newUser))
       })
+});
 
-   
+router.post('./login', (request, response) => {
+  const { user } = request.body;
+
+  User.query()
+    .findOne({ username: user.username })
+    .then(user => console.log('user', user))
+      if (!user) {
+        response.status(401).json({ error: "Invalid Username or Password"})
+      }
 })
 
 module.exports = { usersRouter: router };

@@ -6,4 +6,4 @@ router.get('/', function(req, res, next) {
   res.send("this is the homepage");
 });
 
-module.exports = router;
+module.exports = (router);

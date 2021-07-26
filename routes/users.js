@@ -41,6 +41,7 @@ router.post('/login', (request, response) => {
 
   User.query()
     .findOne({ username: user.username || '' })
+    .withGraphFetched('pitches')
     .then(existingUser => {
       if (!existingUser) {
         response.status(401).json({ error: "Invalid Username or Password"})
@@ -53,7 +54,7 @@ router.post('/login', (request, response) => {
               const secret = process.env.AUTH_SECRET;
               const payload = { user_id: existingUser.id };
               const token = jwt.sign(payload, secret);
-              response.status(200).json({ token })
+              response.status(200).json({ token, existingUser})
             }
           })
         }

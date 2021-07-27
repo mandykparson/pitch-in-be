@@ -4,7 +4,6 @@ const { Pitch } = require('../models/pitch')
 
 router.get('/pitches', (request, response) => {
   Pitch.query()
-    // .withGraphFetched('users')
     .then(pitches => response.json(pitches))
 });
 

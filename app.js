@@ -10,6 +10,7 @@ const { usersRouter } = require('./routes/users');
 // const indexRouter = require('./routes/index');
 const { pitchesRouter } = require('./routes/pitches');
 const { userPitchesRouter } = require('./routes/user_pitches')
+const { banksRouter } = require('./routes/banks')
 
 const app = express();
 
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
 // app.use('/', indexRouter);
-app.use(usersRouter, pitchesRouter, userPitchesRouter);
+app.use(usersRouter, pitchesRouter, userPitchesRouter, banksRouter);
 
 
 // catch 404 and forward to error handler

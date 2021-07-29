@@ -3,6 +3,9 @@ exports.up = function(knex) {
         t.increments();
         t.string('username');
         t.string('password_digest');
+        t.string('full_name');
+        t.string('bank');
+        t.integer('bank_account');
     })
 };
 

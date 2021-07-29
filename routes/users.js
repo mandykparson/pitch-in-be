@@ -23,6 +23,13 @@ router.get('/users', (request, response, next) => {
       .then(users => response.json(users));
 });
 
+router.get('/users/:id', (request, response) => {
+  const params = request.params.id
+  User.query()
+    .findOne({id: params})
+    .then(user => response.json(user))
+})
+
 // router.get('/users', authenticate, sendUsers)
 
 router.post('/users', (request, response) => {

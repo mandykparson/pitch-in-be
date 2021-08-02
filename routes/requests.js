@@ -18,7 +18,7 @@ router.post('/requests', (request, response) => {
 
 router.delete('/requests/:id', (request, response) => {
     const deleteThis = request.params.id
-    BankAccount.query()
+    Request.query()
         .where('id', deleteThis)
         .del()
         .then(requestMig => response.status(410).json(requestMig))

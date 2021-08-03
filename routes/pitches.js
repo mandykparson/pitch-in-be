@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Pitch } = require('../models/pitch')
+const { UserPitch } = require('../models/user_pitch')
 
 router.get('/pitches', (request, response) => {
   Pitch.query()
@@ -13,6 +14,7 @@ router.post('/pitches', (request, response) => {
     .insert({ title: pitch.title, description: pitch.description, image: pitch.image, total: pitch.total })
     .then(pitch => response.status(201).json(pitch))
 })
+
 
 router.delete('/pitches/:id', (request, response) => {
   const deleteThis = request.params.id
